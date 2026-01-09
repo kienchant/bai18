@@ -1,0 +1,133 @@
+.headercorner {
+    position: -webkit-sticky; /* Hỗ trợ Safari */
+    position: sticky; 
+    top: 100px; /* Cách mép trên màn hình 100px khi đang cuộn trong section */
+    left: 5%;
+    z-index: 10;
+    font-family: 'Teko', sans-serif;
+    font-size: 1.5rem;
+    color: #ffc107;
+    text-transform: uppercase;
+    border-left: 4px solid #ffc107;
+    padding-left: 15px;
+    width: fit-content; /* Chỉ rộng bằng đúng chữ */
+    font-size: clamp(1.2rem, 3vw, 3.0rem);
+    font-family: 'Cinzel', serif;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.Hc33{
+     color: black;
+     border-left: none;
+     text-shadow: none;
+}
+#toancanh1 {
+    position: relative; 
+    display: block; /* Đổi từ flex sang block để sticky dễ tính toán tọa độ */
+    padding-top: 100px; /* Tạo khoảng trống cho chữ ở trên cùng */
+    overflow: visible; /* Quan trọng: không được để hidden nếu muốn sticky chạy */
+}
+
+/* Container chính */
+.ochuanoidung1 {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; /* Căn giữa các phần tử con theo chiều ngang */
+    align-items: center;     /* Căn giữa các phần tử con theo chiều dọc */
+    gap: 40px;               /* Khoảng cách giữa video và chữ */
+    width: 95%;              /* Tăng độ rộng một chút để linh hoạt */
+    max-width: 1200px;
+    margin: 0 auto;          /* Chiêu "thần thánh" để căn toàn bộ container ra giữa */
+    min-height: 80vh;
+    padding-bottom: 70px;        /* Đảm bảo nội dung chiếm gần hết chiều cao section */
+}
+
+/* Video bên trái */
+.ovideo1 {
+    flex: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    z-index: 5; /* Đảm bảo không quá bé trên mobile */
+}
+
+.khungvideo1 {
+    position: relative;
+    padding-bottom: 56.25%; /* Tỷ lệ 16:9 */
+    height: 0;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.khungvideo1 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+/* Phần chữ bên phải */
+.khungchu1 {
+    flex: 50%;
+    min-width: 300px;
+    text-align: left;
+    max-width: 500px;
+
+}
+
+.sub-title {
+    font-family: 'Teko', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+.noidunggt {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e9e6e6;
+    margin-bottom: 25px;
+}
+
+/* Info Box */
+.otheloai {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 3px solid #ffc107;
+}
+
+.item {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.item span {
+    color: #ffc107;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* --- ĐIỀU CHỈNH CHO ĐIỆN THOẠI --- */
+@media (max-width: 768px) {
+    .ochuanoidung1 {
+        flex-direction: column; /* Xếp chồng dọc */
+        margin-top: 120px;
+        text-align: center;
+    }
+
+    .headercorner {
+        top: 70px;
+        font-size: 1.2rem;
+    }
+
+    .noidunggt {
+        text-align: center;
+        max-width: 100%; /* Chữ căn giữa cho đẹp trên mobile */
+    }
+
+    .otheloai {
+        text-align: left;
+        margin: 0 auto;   /* Căn cái hộp này ra giữa màn hình mobile */
+        width: 100%; /* Box thông tin vẫn giữ căn trái cho dễ đọc */
+    }
+}

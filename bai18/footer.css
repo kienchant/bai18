@@ -1,0 +1,35 @@
+footer {
+    background-color: #111; /* Đen xám nhẹ cho sang */
+    color: #aaa;
+    padding: 40px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    display: block; /* Tránh bị lỗi flex của body */
+    scroll-snap-align: end;
+    left: 0;
+    right 0;
+}
+
+.ftnoidung {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fttop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.ftlb {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 2px;
+}
+.cre {
+    font-size: 20px;
+    margin-top: 10px;
+}

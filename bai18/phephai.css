@@ -1,0 +1,101 @@
+/* Container chính dùng Grid 3 cột cố định */
+:root {
+    /* Bảng màu ZZZ */
+    --c-neon-green: #ccff00;
+     --c-surface: #1a1a1a;
+    --c-gray: #444444;
+}
+.factions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cột đều nhau */
+    grid-template-rows: repeat(2, 250px); /* 2 hàng cố định chiều cao */
+    gap: 20px;
+    padding: 40px 10%;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.faction-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Gốc tọa độ cho card */
+}
+
+/* Thẻ card */
+.faction-card {
+    position: absolute; /* Quan trọng: Để khi nở ra không đẩy thằng bên cạnh */
+    width: 200px;
+    height: 200px;
+    display: flex;
+    background: var(--c-surface);
+    border: 3px solid var(--c-gray);
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    overflow: hidden;
+}
+
+.faction-icon img {
+    width: 200px;
+    height: 200px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); /* Đổ bóng nhẹ cho icon nổi lên */
+    transition: all 0.3s ease;
+}
+
+.faction-content {
+    position: absolute;
+    opacity: 0;
+    padding: 25px;
+    width: 100%;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.faction-code {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--c-orange);
+    margin-bottom: 5px;
+}
+
+/* =========================================
+   HIỆU ỨNG HOVER - KHÔNG DỊCH CHUYỂN GỐC
+   ========================================= */
+.faction-item:hover .faction-card {
+    width: 380px; /* Chiều rộng khi nở */
+    height: 220px; /* Chiều cao khi nở */
+    border-radius: 0px; 
+    border-color: var(--c-neon-green);
+    background: #000;
+    transform: skewX(-10deg);
+    z-index: 100; /* Nổi lên trên các icon khác */
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+}
+
+.faction-item:hover .faction-icon {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.faction-item:hover .faction-content {
+    opacity: 1;
+    transform: translateY(0) skewX(10deg);
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 1024px) {
+    .factions-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột trên tablet */
+        grid-template-rows: repeat(3, 220px);
+    }
+}
+
+@media (max-width: 600px) {
+    .factions-grid {
+        grid-template-columns: 1fr; /* 1 cột trên mobile */
+        grid-template-rows: repeat(6, 180px);
+    }
+}

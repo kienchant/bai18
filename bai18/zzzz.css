@@ -1,0 +1,403 @@
+/* =========================================
+   1. CORE VARIABLES & RESET
+   ========================================= */
+:root {
+    /* Bảng màu ZZZ */
+    --c-neon-green: #ccff00;
+    --c-orange: #ff6600;
+    --c-cyan: #00f0ff;
+    --c-dark: #0f0f0f;
+    --c-surface: #1a1a1a;
+    --c-gray: #444444;
+    --c-white: #ffffff;
+    
+    /* Kích thước */
+    --header-height: 80px;
+    --skew-angle: -10deg;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--c-dark);
+    color: var(--c-white);
+    font-family: 'Arial Black', 'Impact', sans-serif; /* Font công nghiệp đậm */
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Cuộn mượt */
+html { scroll-behavior: smooth; }
+
+/* =========================================
+   2. UTILITY CLASSES (ZZZ AESTHETIC)
+   ========================================= */
+
+/* Hộp nghiêng (Skew) */
+.skew-box {
+    transform: skewX(var(--skew-angle));
+    display: inline-block;
+}
+
+.unskew {
+    transform: skewX(10deg); /* Nghiêng ngược lại để chữ thẳng */
+    display: block;
+}
+
+/* Nền chấm bi (Halftone) */
+.bg-dots {
+    background-image: radial-gradient(var(--c-gray) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Nền sọc cảnh báo */
+
+
+/* Hiệu ứng Glitch cho chữ */
+@keyframes glitch-anim {
+    0% { text-shadow: 2px 2px var(--c-neon-green), -2px -2px var(--c-orange); }
+    25% { text-shadow: -2px 2px var(--c-cyan), 2px -2px var(--c-neon-green); }
+    50% { text-shadow: 2px -2px var(--c-orange), -2px 2px var(--c-cyan); }
+    75% { text-shadow: -2px -2px var(--c-neon-green), 2px 2px var(--c-orange); }
+    100% { text-shadow: 2px 2px var(--c-neon-green), -2px -2px var(--c-orange); }
+}
+
+.glitch-text:hover {
+    animation: glitch-anim 0.3s infinite;
+}
+
+/* =========================================
+   3. UI COMPONENTS
+   ========================================= */
+
+
+/* =========================================
+   4. LAYOUT SECTIONS
+   ========================================= */
+
+/* HEADER */
+header {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    position: sticky;
+    top: 0;
+    background-color: rgba(15, 15, 15, 0.95);
+    border-bottom: 2px solid var(--c-gray);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--c-white);
+    letter-spacing: -2px;
+    border: 2px solid var(--c-white);
+    padding: 5px 15px;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: var(--c-orange);
+    transition: width 0.3s;
+}
+nav a:hover::after { width: 100%; }
+#hero {
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    /* Placeholder Background: Cảnh thành phố */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://via.placeholder.com/1920x1080/222222/333333?text=NEW+ERIDU+CITYSCAPE');
+    background-size: cover;
+    background-position: center;
+}
+.full-screen {
+    width: 100%;
+    height: 100vh; /* Chiếm trọn màn hình */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+#hero {
+    background-image:   url('anh/3z/ww1.webp');
+}
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(0,0,0,0.7);
+    border: 2px solid var(--c-gray);
+}
+
+.hero-headline {
+    font-size: 5rem;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--c-white);
+    text-shadow: 4px 4px 0px var(--c-surface);
+}
+/* AGENTS / CHARACTERS GRID */
+#agents {
+    padding: 80px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: var(--c-white);
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    border-left: 10px solid var(--c-orange);
+    padding-left: 20px;
+}
+
+.agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+/* Card Design */
+.agent-card {
+    background: var(--c-surface);
+    border: 3px solid var(--c-gray);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 10px;
+}
+
+.agent-card::before {
+    content: "DỮ LIỆU PROXY";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--c-neon-green);
+    color: var(--c-dark);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    font-weight: bold;
+    z-index: 5;
+}
+
+.agent-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.2);
+    transition: filter 0.3s;
+    border: 1px solid var(--c-gray);
+}
+
+.agent-info {
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.agent-name {
+    font-size: 2rem;
+    color: var(--c-white);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+/* Card Hover Effects */
+.agent-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--c-cyan);
+    box-shadow: 0px 10px 0px var(--c-cyan);
+}
+
+.agent-card:hover .agent-image {
+    filter: grayscale(0%) contrast(1);
+}
+
+.agent-card:hover .agent-name {
+    color: var(--c-cyan);
+}
+
+/* FOOTER */
+footer {
+    background: var(--c-dark);
+    border-top: 5px solid var(--c-orange);
+    padding: 50px 5%;
+    text-align: center;
+    margin-top: 100px;
+    font-family: monospace;
+    color: #888;
+}
+@keyframes flicker {
+    0% { opacity: 0.9; }
+    5% { opacity: 0.8; }
+    10% { opacity: 0.9; }
+    15% { opacity: 0.85; }
+    100% { opacity: 0.9; }
+}
+.full-screen {
+    width: 100%;
+    height: 100vh; /* Chiếm trọn màn hình */
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+#intro {
+    padding: 100px 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.intro-container {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Chia đôi 2 bên */
+   gap: 60px;
+   align-items: start;
+}
+
+/* Khối văn bản bên trái */
+.intro-text {
+
+    background: rgba(26, 26, 26, 0.9);
+    border-right: 5px solid var(--c-neon-green);
+    padding: 40px;
+    position: relative;
+}
+
+.intro-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--c-white);
+}
+
+.divider-line {
+    width: 60px;
+    height: 4px;
+    background: var(--c-orange);
+    margin-bottom: 20px;
+}
+
+.intro-text p {
+    font-family: monospace;
+    color: #ccc;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Khối Media bên phải */
+.intro-media {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.video-frame {
+   position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Tạo tỉ lệ khung hình 16:9 */
+    height: 0;
+    border: 4px solid var(--c-gray);
+    background: #000;
+    box-shadow: 8px 8px 0px var(--c-surface); /* Tạo hiệu ứng khối nổi */
+}
+
+
+.video-frame img {
+    width: 100%;
+    /* Giữ ảnh phẳng, không unskew */
+    filter: sepia(10%) contrast(1.1);
+    transition: filter 0.3s;
+}
+/* Bảng thông số bên dưới video */
+.info-table {
+    background: var(--c-surface);
+    border: 1px solid var(--c-gray);
+    padding: 20px;
+}
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--c-gray);
+}
+
+.table-row:last-child { border-bottom: none; }
+
+.table-row .label {
+    color: var(--c-gray);
+    font-size: 0.9rem;
+}
+
+.table-row .value {
+    color: var(--c-cyan);
+    font-weight: bold;
+}
+/* =========================================
+   6. RESPONSIVE MEDIA QUERIES
+   ========================================= */
+@media (max-width: 768px) {
+    .hero-headline { font-size: 3rem; }
+    
+    nav ul {
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background: var(--c-dark);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 2px solid var(--c-neon-green);
+        display: none;
+    }
+
+    nav ul.active { display: flex; }
+    .menu-toggle { display: block; }
+.intro-container {
+        grid-template-columns: 1fr;
+    }
+    .intro-text {
+        margin-bottom: 40px;
+    }
+}

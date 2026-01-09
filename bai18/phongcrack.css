@@ -1,0 +1,45 @@
+
+.content-box {
+  height: 100vh; /* Cao bằng đúng màn hình */
+  display: flex;
+  justify-content: center; /* Căn giữa nội dung nằm ngang */
+  align-items: center;     /* Căn giữa nội dung nằm dọc */
+  scroll-snap-align: start; /* Điểm hít */
+  scroll-margin-top: 60px;
+}
+.mo {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 2vw;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  
+  /* SỬA LẠI CHIỀU CAO */
+  min-height: 75vh;       /* Dùng min-height thay vì height để nó có thể dài ra nếu cần */
+  height: auto;          /* Cho phép khung tự co giãn theo nội dung */
+
+  text-align: center;
+  
+  /* SỬA LẠI CHIỀU RỘNG */
+  width: 90%;            /* Trên điện thoại nên chiếm nhiều không gian hơn (90%) */
+  max-width: 1200px;     /* Giới hạn lại trên máy tính cho đẹp */
+  margin: 5vh auto; !important    /* Căn giữa và tạo chút khoảng cách trên dưới */
+
+  /* SỬA LẠI CÁCH DÀN TRANG (FLEXBOX) */
+  display: flex;
+  flex-wrap: wrap;       /* QUAN TRỌNG: Cho phép ảnh/chữ tự rớt dòng khi màn hình nhỏ */
+  justify-content: center;
+  align-items: center;   /* Căn giữa nội dung bên trong */
+  gap: 20px; 
+  padding: 1vw;            /* Tạo khoảng cách giữa phần chữ và phần ảnh */
+  overflow: visible;     /* Sửa lỗi thiếu dấu chấm phẩy ở dòng trước đó của bạn */
+}
+
+/* Thêm đoạn này để trên điện thoại chữ không bị quá to */
+@media (max-width: 768px) {
+  .mo {
+    padding: 20px;       /* Giảm padding để tiết kiệm diện tích trên mobile */
+    flex-direction: column; /* Ép chữ nằm trên, ảnh nằm dưới */
+  }
+}

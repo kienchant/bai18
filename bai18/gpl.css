@@ -1,0 +1,156 @@
+/* =========================================
+   SECTION 4: FEATURES SLIDER (FULL SCREEN)
+   ========================================= */
+#features {
+    width: 100%;
+    height: 100vh; /* Chiếm hết chiều cao màn hình */
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.feature-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.feature-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    opacity: 0; /* Ẩn các slide không active */
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.feature-item.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+/* Phần Media (Bên trái) */
+.feature-media {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+}
+
+.media-monitor {
+    width: 100%;
+    max-width: 800px;
+    background: #222;
+    border: 10px solid #333;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+.media-monitor img {
+    width: 100%;
+    display: block;
+    border-bottom: 5px solid #333;
+}
+
+.monitor-footer {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    background: #2a2a2a;
+    font-family: monospace;
+}
+
+.monitor-footer .dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--c-orange);
+    margin-right: 5px;
+}
+
+/* Phần Chữ (Bên phải) */
+.feature-info {
+    flex: 0.8;
+    padding-left: 50px;
+}
+
+.info-box {
+    background: var(--c-surface);
+    padding: 50px;
+    border-left: 8px solid var(--c-neon-green);
+}
+
+.info-box .tag {
+    color: var(--c-neon-green);
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.info-box h2 {
+    font-size: 3rem;
+    margin: 10px 0;
+    color: var(--c-white);
+}
+
+.info-box .line {
+    width: 100px;
+    height: 4px;
+    background: var(--c-orange);
+    margin-bottom: 20px;
+}
+
+.info-box p {
+    color: #aaa;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Nút điều hướng */
+.slider-nav {
+    position: absolute;
+    bottom: 50px;
+    right: 10%;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn {
+    background: transparent;
+    border: 2px solid var(--c-white);
+    color: var(--c-white);
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    background: var(--c-neon-green);
+    color: var(--c-dark);
+    border-color: var(--c-neon-green);
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+    .feature-item {
+        flex-direction: column;
+        justify-content: center;
+        padding: 50px 5%;
+    }
+    .feature-info {
+        padding-left: 0;
+        margin-top: 30px;
+    }
+    .info-box h2 { font-size: 2rem; }
+}

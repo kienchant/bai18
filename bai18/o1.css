@@ -1,0 +1,147 @@
+/* Container bên trong vùng mờ */
+.bocucto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    gap: 2vw;
+}
+
+/* Vùng chữ: 40% */
+.khungchat {
+    width: 40%;
+    padding: 2vw;
+    /* Màu nền vừa mắt, nổi bật trên nền tối/sáng */
+    background: rgba(0, 0, 0, 0.4); 
+    border-radius: 15px;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.vunganh {
+    width: 60%;  /* Ảnh chiếm 60% */
+    display: flex;
+    justify-content: center; /* Đẩy khung ảnh về sát bên phải */
+}
+
+.khunganh {
+    width: 100%;  /* Kích thước tui đã tính cho ông */
+    height: 500px;
+    max-width: 700px; /* Kích thước tui đã tính cho ông */
+    position: relative;
+    border-radius: 2vw;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.anhtruot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh luôn lấp đầy khung */
+    opacity: 0;
+    animation: autoFade 12s infinite;
+}
+
+.anhtruot:nth-child(1) { animation-delay: 0s; }
+.anhtruot:nth-child(2) { animation-delay: 4s; }
+.anhtruot:nth-child(3) { animation-delay: 8s; }
+
+@keyframes autoFade {
+    0% { opacity: 0; }
+    10% { opacity: 1; }  /* Hiện lên */
+    33% { opacity: 1; }  /* Giữ nguyên */
+    43% { opacity: 0; }  /* Mờ đi */
+    100% { opacity: 0; }
+}
+.noidung {
+    font-size: clamp(14px, 1.2vw, 18px);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    max-width: 320px;
+    margin-top: 20px;
+    text-align: left;
+}
+.thanhchude {
+    font-family: 'Montserrat', sans-serif;
+    font-size: (2rem, 4vw, 3rem);
+    font-weight: 700;
+    max-width: 400px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.5));
+    position: relative;
+    padding-bottom: 1vw; /* Tạo khoảng trống để hiện thanh ngang */
+    margin-bottom: 1,5vw;
+    text-align: start;
+    
+}
+.thanhchude::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;             /* Căn lề trái theo chữ */
+    width: 30%;
+    height: 3px;
+    background: #c9c6db;
+}
+.laplanh {
+    background: linear-gradient(
+        to right, 
+        #156ae2 0%,    /* Xanh dương đậm */
+    #6A5ACD 35%,   /* Xanh tím (Slate Blue) */
+    #D8BFD8 70%,   /* Tím nhạt (Thistle) */
+    #0f68e6 100%
+    );
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+    font-weight: 900;
+}
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+.mauhighlight{
+
+    font-weight: bold;
+
+    color:  #ffc107;
+
+}
+@media (max-width: 768px) {
+    .bocucto {
+        flex-direction: column; /* Chuyển sang hàng dọc */
+        gap: 5vw;
+    }
+
+    .khungchat, .vunganh {
+        width: 100%;            /* Chiếm hết chiều ngang */
+    }
+
+    .thanhchude {
+        text-align: center;
+    }
+    
+    .thanhchude::after {
+        left: 50%;
+        transform: translateX(-50%); /* Căn giữa thanh gạch chân */
+    }
+
+    .noidung {
+        text-align: center;
+        max-width: 100%;
+    }
+    .khunganh {
+        height: auto; 
+        aspect-ratio: 7 / 5; /* Chỉ dùng tỉ lệ này trên điện thoại để không bị méo */
+    }
+}

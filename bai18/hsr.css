@@ -1,0 +1,267 @@
+/* BIẾN MÀU SẮC */
+:root {
+    --primary: #00ffcc;
+    --bg-dark: #05070a;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+    --text: #ffffff;
+}
+
+/* THIẾT LẬP CHUNG */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+/* ĐỊNH DẠNG SECTION FULL MÀN HÌNH */
+.full-screen, .hero-section {
+    width: 100%;
+    height: 100vh; /* Chiếm trọn màn hình */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.alternate-bg {
+    background-color: #080a0f;
+}
+
+/* TRANG TRÍ HERO */
+.hero-section {
+    background-image: linear-gradient(rgba(0,0,0,0.2), #000000b3), 
+                      url('anh/honkai/hsrwb1.webp');
+}
+.aboutt{
+    background-image: linear-gradient(rgba(105, 102, 102, 0.2), #000000b3), 
+                      url('anh/honkai/1377271.jpg');
+}
+.title {
+    font-size: clamp(3rem, 10vw, 6rem);
+    letter-spacing: -3px;
+    margin-bottom: 0;
+    background: linear-gradient(to bottom, #fff 40%, #444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--primary);
+    letter-spacing: 6px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* NÚT BẤM */
+.btn-main {
+    padding: 16px 45px;
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.btn-main:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.4);
+}
+
+/* GRID LAYOUT CHO CARDS */
+.section-title {
+    font-size: 2rem;
+    margin: 10px;
+    letter-spacing: 4px;
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Cho các thẻ cao bằng nhau */
+    flex-wrap: wrap; 
+    gap: 20px;
+    width: 95%;
+    max-width: 1400px; /* Nới rộng container cho 5 thẻ */
+    margin: 60px auto;
+}
+
+.card {
+     position: relative;
+    flex: 1 1 220px; /* Điểm mấu chốt: Co giãn linh hoạt, tối thiểu 220px */
+ /* Không để thẻ quá to trên máy tính */
+    height: 450px;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Sẽ tự co giãn theo container */
+    max-width: 300px; /* Giới hạn độ rộng tối đa */
+    
+    /* THÔNG SỐ QUAN TRỌNG */
+    aspect-ratio: 9 / 16;
+}
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    background: rgba(0, 255, 204, 0.02);
+}
+.world-img img{
+    width: 100%;
+    height: 100%; /* Bắt buộc phải có chiều cao cố định của thẻ cha */
+    
+    /* THÔNG SỐ QUAN TRỌNG */
+    object-fit: cover; /* Ảnh sẽ lấp đầy khung, phần thừa bị cắt bỏ tự nhiên */
+    object-position: top; /* Giữ cho đầu nhân vật luôn ở chính giữa, không bị cắt mất đầu */
+    
+    display: block;
+      position: absolute;
+}
+.texttt {
+ /* Đây là chìa khóa: Đẩy toàn bộ khối này xuống đáy */
+    margin-top: auto; 
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(to top, 
+                rgba(0, 0, 0, 0.9) 0%, 
+                rgba(0, 0, 0, 0.4) 60%, 
+                transparent 100%);
+}
+.tag {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 2px 10px;
+}
+
+/* HIỆU ỨNG ÁNH SÁNG */
+.glow {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: var(--primary);
+    filter: blur(180px);
+    opacity: 0.05;
+    z-index: 0;
+    
+}
+/* --- TỔNG QUAN CHI TIẾT --- */
+.about-section {
+    background: #050a18;
+}
+
+.about-container {
+    display: flex;
+    align-items: flex-start; /* Căn lề trên */
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+}
+
+.about-text {
+    flex: 1; /* Chiếm 1 phần */
+     background: rgba(7, 6, 6, 0.4);
+}
+
+.about-text h2 {
+    font-size: 2.8rem;
+    color: var(--accent-blue);
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #ccc;
+    line-height: 1.8;
+}
+
+/* Cột chứa cả Video và Info */
+.about-media {
+    flex: 1.2; /* Chiếm diện tích lớn hơn một chút để video rõ nét */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Khung video */
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 2px solid var(--glass-border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.info-box{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.829);
+}
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ô thông tin thu nhỏ kiểu Glassmorphism */
+.info-mini-card {
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: rgba(7, 6, 6, 0.4);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    
+}
+
+.info-row:last-child { margin-bottom: 0; }
+
+.info-row .label { color: #888; font-size: 0.9rem; }
+.info-row .value { color: var(--accent-blue); font-weight: bold; }
+
+#gameplay{
+    background-image: url('anh/honkai/wwwwwwhh.webp');
+}
+/* Responsive */
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column;
+    }
+    .about-media {
+        width: 100%;
+    }
+    .full-screen {
+        height: auto;
+        min-height: 100vh;
+        padding: 100px 20px;
+    }
+    
+    .nav-links a {
+        margin: 0 10px;
+        font-size: 0.7rem;
+    }
+}

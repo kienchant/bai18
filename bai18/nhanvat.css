@@ -1,0 +1,172 @@
+.char-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Cho các thẻ cao bằng nhau */
+    flex-wrap: wrap; 
+    gap: 20px;
+    width: 95%;
+    max-width: 1400px; /* Nới rộng container cho 5 thẻ */
+    margin: 60px auto;
+}
+
+.char-card {
+    position: relative;
+    flex: 1 1 220px; /* Điểm mấu chốt: Co giãn linh hoạt, tối thiểu 220px */
+ /* Không để thẻ quá to trên máy tính */
+    height: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Sẽ tự co giãn theo container */
+    max-width: 300px; /* Giới hạn độ rộng tối đa */
+    
+    /* THÔNG SỐ QUAN TRỌNG */
+    aspect-ratio: 9 / 16;
+}
+.char-info {
+    /* Đây là chìa khóa: Đẩy toàn bộ khối này xuống đáy */
+    margin-top: auto; 
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(to top, 
+                rgba(0, 0, 0, 0.9) 0%, 
+                rgba(0, 0, 0, 0.4) 60%, 
+                transparent 100%);
+}
+/* Hiệu ứng Hover đặc biệt cho Waifu */
+.char-card:hover {
+    transform: translateY(-20px) scale(1.05);
+    z-index: 5;
+    border-color: #ffc107;
+    box-shadow: 0 15px 45px rgba(255, 193, 7, 0.9);
+}
+.main1 {
+    color:#ffc107;
+}
+.raidenmei:hover {
+    border-color: #a335ee;
+    transform: translateY(-20px) scale(1.05);
+    /* Đổ bóng phát sáng màu tím xung quanh card */
+    box-shadow:  
+                0 15px 60px rgba(158, 38, 238, 0.9);
+    z-index: 6;
+}
+.char-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    z-index: 3;
+}
+
+.char-card:hover::before {
+    left: 125%;
+}
+.rd1{
+    color: #c7b6ff;
+}
+.rd2{
+    color: #a6c4f8;
+}
+.rd3{
+    color: #FFB13B;
+}
+.alechli:hover {
+    border-color: #a61d1d;
+    transform: translateY(-20px) scale(1.05);
+    /* Đổ bóng phát sáng màu tím xung quanh card */
+    box-shadow:  
+                0 15px 60px rgba(166, 29, 29, 0.9);
+    z-index: 8;
+}
+.alechili:hover::before {
+    left: 125%;
+}   
+.skriktt:hover {
+    border-color: #71a6d2;
+    transform: translateY(-20px) scale(1.05);
+    /* Đổ bóng phát sáng màu tím xung quanh card */
+    box-shadow:  
+                0 15px 60px rgba(70, 237, 240, 0.9);
+    z-index: 6;
+}
+.skirktt:hover::before {
+    left: 125%;
+}   
+.cunham:hover {
+    border-color: #ffb13b;
+    transform: translateY(-20px) scale(1.05);
+    /* Đổ bóng phát sáng màu tím xung quanh card */
+    box-shadow:  
+                0 15px 60px rgba(255, 177, 59, 0.9);
+    z-index: 6;
+}
+.cunham:hover::before {
+    left: 125%;
+}   
+.char-img {
+    width: 100%;
+    height: 100%; /* Chiếm toàn bộ diện tích card */
+    position: absolute; /* Để ảnh nằm dưới cùng */
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.char-img img {
+    width: 100%;
+    height: 100%; /* Bắt buộc phải có chiều cao cố định của thẻ cha */
+    
+    /* THÔNG SỐ QUAN TRỌNG */
+    object-fit: cover; /* Ảnh sẽ lấp đầy khung, phần thừa bị cắt bỏ tự nhiên */
+    object-position: top; /* Giữ cho đầu nhân vật luôn ở chính giữa, không bị cắt mất đầu */
+    
+    display: block;
+}
+
+.char-card:hover .char-img img {
+    filter: brightness(1); /* Sáng bừng khi di chuột vào */
+}
+
+/* --- RESPONSIVE CHO DI ĐỘNG --- */
+@media (max-width: 768px) {
+    .char-card {
+        flex: 1 1 45%; /* Trên tablet sẽ hiện 2 thẻ 1 hàng */
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .char-card {
+        flex: 1 1 100%; /* Trên điện thoại dọc sẽ hiện 1 thẻ 1 hàng */
+        max-width: 350px;
+    }
+}
+.char-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(255, 193, 7, 0);
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.char-card:hover::after {
+    box-shadow: inset 0 0 30px rgba(255, 193, 7, 0.5); /* Phát sáng bên trong viền */
+}

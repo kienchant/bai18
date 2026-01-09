@@ -1,0 +1,67 @@
+/* CLASS CHUNG: Giữ các thông số về khung và chữ */
+.fullman {
+    width: 100%;
+    min-height: 100dvh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%; 
+    
+    /* Các thông số nền dùng chung */
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+/* CLASS RIÊNG: Đặt ảnh cho từng Section bằng ID */
+#gsbanner {
+    background-image: linear-gradient(rgba(0,0,0,0.2), #000000b3), 
+                      url('anh/genshin/gisnt.webp');
+}
+
+#toancanh1 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), #000000b3), 
+                      url('anh/genshin/gisect22.webp'); /* Thay tên ảnh thứ 2 */
+}
+.nenmo2 {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url("anh/genshin/gisect22.webp");
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); 
+    transform: scale(1.1);
+}
+#toancanh4{
+    background-color: #f2f2f2;
+}
+/* PHẦN CHỮ: Giữ nguyên như cũ */
+.chufullman {
+    font-size: clamp(2.5rem, 8vw, 6rem); 
+    font-family: 'Cinzel', serif;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    letter-spacing: 2px; 
+}
+
+/* Tắt hiệu ứng fixed trên điện thoại để không bị lỗi ảnh bị phóng to */
+@media (max-width: 768px) {
+    .fullman {
+        background-attachment: scroll !important;
+    }
+}
+.chugi{
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+}
